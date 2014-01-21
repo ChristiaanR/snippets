@@ -1,0 +1,38 @@
+/* source: http://docs.joomla.org/How_to_determine_if_the_user_is_viewing_the_front_page
+
+Joomla 2.5 Joomla 3.x Joomla 2.5 and 3.x series
+
+There are some differences in 1.6/1.7/2.5 to avoid Strict Standards errors. Use the following code for a site where all content is in the same language:
+
+<?php
+$app = JFactory::getApplication();
+$menu = $app->getMenu();
+if ($menu->getActive() == $menu->getDefault()) {
+        echo 'This is the front page';
+}
+?>
+For multi-lingual sites the front page is dependent on the currently selected language, so you will need to use code like this:
+
+<?php
+$app = JFactory::getApplication();
+$menu = $app->getMenu();
+if ($menu->getActive() == $menu->getDefault( 'en-GB' )) {
+        echo 'This is the front page';
+}
+elseif ($menu->getActive() == $menu->getDefault( 'fr-FR' )) {
+        echo 'Accueil';
+}
+?>
+For multi-lingual sites, it could also be necessary to display a specific code/html for all Default Home pages.
+
+<?php
+$app = JFactory::getApplication();
+$menu = $app->getMenu();
+$lang = JFactory::getLanguage();
+if ($menu->getActive() == $menu->getDefault($lang->getTag())) {
+        echo 'This is the front page';
+}
+else {
+        echo 'Accueil';
+}
+?>
