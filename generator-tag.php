@@ -1,0 +1,1 @@
+JFactory::getDocument()->setGenerator('');
