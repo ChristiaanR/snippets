@@ -1,0 +1,17 @@
+@mixin bp($point) {
+  @if $point == small {
+    @media (max-width: 32em) { @content; }
+  }
+  @else if $point == medium {
+    @media (max-width: 46em) { @content; }
+  }
+  @else if $point == large {
+    @media (max-width: 64em)  { @content; }
+  }
+}
+
+.container {
+  @include bp(baby-bear) {
+    background: purple;
+    }
+}
