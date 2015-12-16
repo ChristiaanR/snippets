@@ -8,3 +8,4 @@ RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 #2. Checks whether the the Host value does not begin with www.;
 #3. Checks for HTTPS (%{HTTPS} is either on or off, so %{HTTPS}s is either ons or offs and in case of ons the s is matched).
 #4. The substitution part of RewriteRule then just merges the information parts to a full URL.
+#source: http://stackoverflow.com/questions/4916222/htaccess-how-to-force-www-in-a-generic-way
