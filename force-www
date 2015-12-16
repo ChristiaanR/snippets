@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+#1. Check whether the Host value is not empty (in case of HTTP/1.0); 
+#2. Checks whether the the Host value does not begin with www.;
+#3. Checks for HTTPS (%{HTTPS} is either on or off, so %{HTTPS}s is either ons or offs and in case of ons the s is matched).
+#4. The substitution part of RewriteRule then just merges the information parts to a full URL.
