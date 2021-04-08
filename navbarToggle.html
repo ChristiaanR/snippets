@@ -5,15 +5,14 @@
 .navbar-checkbox {
 	display: none; /* hide the checkbox -duh- */
 }
-.navbar-toggle {
-	i {
-		margin-right: -1em;
-	}
-	i + i {
-		opacity: 0;
-		margin-right: 0;
-	}
+.navbar-toggle i {
+	margin-right: -1em;
 }
+.navbar-toggle i + i {
+	opacity: 0;
+	margin-right: 0;
+}
+
 .navbar-collapse .nav-item {
 	transition: height 0.3s ease;
 	height: 0;
@@ -23,16 +22,16 @@
 .navbar-checkbox:checked ~ .navbar-collapse .nav-item {
 	height: 3em;
 }
-.navbar-checkbox:checked ~ .navbar-toggle {
+
 	/* toggle icon */
-	i {
-		opacity: 0;
-		transition: opacity 0.3s ease;
-	}
-	i + i {
-		opacity: 1;
-	}
+.navbar-checkbox:checked ~ .navbar-toggle i {
+	opacity: 0;
+	transition: opacity 0.3s ease;
 }
+.navbar-checkbox:checked ~ .navbar-toggle i  + i {
+	opacity: 1;
+}
+
 /* End toggle */
 
 </style>
@@ -44,7 +43,7 @@
 
 				<input type="checkbox" id="navbarCheckbox" class="navbar-checkbox" aria-hidden="true" />
 				<label for="navbarCheckbox" class="navbar-toggle" title="Click to expand menu"> 
-					<i class="fas fa-bars"></i>
+					<i class="fas fa-bars"></i
 					<i class="fas fa-times"></i>
 				</label>
 
