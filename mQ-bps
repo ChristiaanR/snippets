@@ -1,17 +1,37 @@
-@mixin bp($point) {
-  @if $point == small {
-    @media (max-width: 32em) { @content; }
+/* Source: https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/ */
+
+$breakpoints: (
+  'small':  767px,
+  'medium': 992px,
+  'large':  1200px
+) !default;
+
+/// Mixin to manage responsive breakpoints
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
   }
-  @else if $point == medium {
-    @media (max-width: 46em) { @content; }
-  }
-  @else if $point == large {
-    @media (max-width: 64em)  { @content; }
+ 
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
   }
 }
 
-.container {
-  @include bp(baby-bear) {
-    background: purple;
-    }
+/* Usage: */
+
+.selector {
+  color: red;
+  
+  @include respond-to('small') {
+    color: blue;
+  }
 }
